@@ -5,6 +5,7 @@ import {
   useNavigation,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from './Home';
 
 const Courses = () => {
     const navigation = useNavigation();
@@ -14,7 +15,7 @@ const Courses = () => {
       <Text className="text-2xl text-blue-500">Move</Text>
       <Text className="text-2xl text-blue-500">Move</Text>
       <View className="justify-center items-center">
-        <TouchableOpacity onPress={() => navigation.navigate("home")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Mycourses")}>
           <Text className="text-2xl">Move</Text>
         </TouchableOpacity>
       </View>
