@@ -8,7 +8,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
-import React from 'react'
+import React from "react";
 
 import { Octicons } from "@expo/vector-icons";
 import Fontisto from "@expo/vector-icons/Fontisto";
@@ -23,13 +23,7 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth } from "../firebase";
 
-
-
-
-
 const Signup = () => {
-
-
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -40,23 +34,19 @@ const Signup = () => {
     return unsubscribe;
   }, []);
 
-
   const handleSignup = () => {
-     if (password !== confirmpassword) {
-       alert("Passwords do not match. Please try again.");
-       return; // Exit the function if passwords don't match
-     }
-     auth
-       .createUserWithEmailAndPassword(email, password)
-       .then((userCredentials) => {
-         const user = userCredentials.user;
-         console.log("Registered with:", user.email);
-       })
-       .catch((error) => alert(error.message));
-   };
-
-  
-
+    if (password !== confirmpassword) {
+      alert("Passwords do not match. Please try again.");
+      return; // Exit the function if passwords don't match
+    }
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        console.log("Registered with:", user.email);
+      })
+      .catch((error) => alert(error.message));
+  };
 
   const navigation = useNavigation();
   const [fullname, setFullname] = useState("");
@@ -149,8 +139,7 @@ const Signup = () => {
             </View>
             <View className=" flex-row  justify-center">
               <Text className=" text-[#0F0C80]">Already have account? </Text>
-              <TouchableOpacity onPress={() => navigation.navigate("Signin")}>ww231331qwwwwwwwwwwwwwwwwww2ww22133111113qqqq2qqqqqqqqqqqqqqqqqqqqqw222222222222222222222qq 2121qqqqqq          qq      qqq <AQQ>Q  Q Q <AqqaQ><Q>Q   <QQQ>Q  <Q> q q q q qq  <a href="qAQQ">Q  Q   <Q>   <Q> Q       Q   <Q>Q    <Q><Q><Q><Q><Q>q  <q>q  q q AQ  Q Q   Q                               <q>   qq  q <q><Q><Q><Q><Q>   Q Q       <Q><Q><Q> <q> <q> <q><q><q><Qa><q><q><q><q>qqq    qqqqqqqqqqqqqqqqqq  qqqqqqqqqqqqqqqqqqqqqqq q   <q><q>                                                                                                                  q                         <q>   qqq   <Q><Qaq><q><Q><q> <Q> <Q><Q><Q><Q>Q   Q aA  qAQ <WA>qwAaAaaaaaaaaA  <Q>Q    <q>Q                            Q aq  q q       qaq <A><q><Qa><Aa>q     <Q>Q  qA  Q Q QQ    qwAaAaaaaaaaaAQaAQ    <Qa>A <Q><a href="Q">Q                  q         <a href="qA"><Q><Q>Q    <Q>Q  qa      q   aq    q1  <q><Q><q>                       Q   Q a q <q>       <q> <Q><Q><Q>Q  <Q>q  <q><q>q   <q><q>q <q>q      <Qa1> <q>QQ     <Q1>  <Q1><Q>Q    <Q><Q><Q><Q><q><q><q> <Q>                                                                                           <Q>QQQQQQQQQQQQQQQQQQQQQ                                                        <Q>QQQQQQ11`11  1             Q                                                                           11        qa  q q AQ    <Q1>1 Q   <Q><Q>  <Q>1Q Q   Qa  q   <Q><Q1>q  1 qqqqqqqqqqqqqqq q 12qq  1q11  <q>qq 1q  q   q                                           qqqqqqqqqqqqqqq q 1q  q 1q  1 qq              1q              1   q 1   1             1qq 1q  1q1212q1q 11              q111111111111111111111111111111 1q  2   1 qq  AQ                                                      q                               q q q1q 1qq 12  q12qwq  1q  1`11212121qq    q q q   q1q1111111111111111111111111111111111111111111111111111111111111  q1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111  
-              81//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8zAS/*/8a sa/*/sa*//a*/*wq*/z/*X*/**/*a*//QWAS</q></Q1></Q></Q></Q></Q></Q1></Q></Q></Q></q></q></q></Q></Q></Q></Q></Q></Q1></Q1></q></Qa1></q></q></q></q></q></Q></Q></Q></Q></q></q></q></Q></q></Q></Q></Q></a></a></Q></Qa></Q></Aa></Qa></q></A></q></Q></WA></Q></Q></Q></Q></Q></q></Q></q></Qaq></Q></q></q></q></q></q></q></q></Qa></q></q></q></q></q></Q></Q></Q></Q></Q></Q></Q></q></q></q></Q></Q></Q></Q></Q></Q></Q></Q></a></Q></QQQ></Q></AqqaQ></AQQ>
+              <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
                 <Text className="text-[#0F0C80] font-bold ">Sign in</Text>
               </TouchableOpacity>
             </View>
@@ -160,6 +149,6 @@ const Signup = () => {
       </KeyboardAvoidingView>
     </ScrollView>
   );
-}
+};
 
-export default Signup
+export default Signup;
