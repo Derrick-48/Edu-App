@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   SafeAreaView,
+  KeyboardAvoidingView,
 } from "react-native";
 import React from 'react'
 
@@ -13,20 +14,43 @@ import Fontisto from "@expo/vector-icons/Fontisto";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { EvilIcons } from "@expo/vector-icons";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   createStaticNavigation,
   useNavigation,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import { auth } from "../firebase";
 
 const Signin = () => {
+
+
+ useEffect(() => {
+   const unsubscribe = auth.onAuthStateChanged((user) => {
+     if (user) {
+       navigation.replace("Home");
+     }
+   });
+
+   return unsubscribe;
+ }, []);
+
+
+   const handleSignin = () => {
+     auth
+       .signInWithEmailAndPassword(email, password)
+       .then((userCredentials) => {
+         const user = userCredentials.user;
+         console.log("Logged in with:", user.email);
+       })
+       .catch((error) => alert(error.message));
+   };
   const navigation = useNavigation();
   
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    return (
+  return (
+    <KeyboardAvoidingView>
       <SafeAreaView className=" p-6">
         <View className=" items-center flex-row ml-20 mb-6 mt-24">
           <View className="flex justify-center items-center ">
@@ -72,7 +96,7 @@ const Signin = () => {
         </View>
 
         <View className="bg-[#2ECC71] p-3 rounded-2xl mb-16">
-          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+          <TouchableOpacity onPress={handleSignin}>
             <Text className="text-center font-bold text-white ">Sign in</Text>
           </TouchableOpacity>
         </View>
@@ -135,12 +159,13 @@ const Signin = () => {
 
         <View className=" flex-row  justify-center">
           <Text className=" text-[#0F0C80]">Don't have account? </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
             <Text className="text-[#0F0C80] font-bold ">Sign up</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
-    );
+    </KeyboardAvoidingView>
+  );
   }
 
 export default Signin

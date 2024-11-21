@@ -15,7 +15,7 @@ const Courses = () => {
       <Text className="text-2xl text-blue-500">Move</Text>
       <Text className="text-2xl text-blue-500">Move</Text>
       <View className="justify-center items-center">
-        <TouchableOpacity onPress={() => navigation.navigate("Mycourses")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Signout")}>
           <Text className="text-2xl">Move</Text>
         </TouchableOpacity>
       </View>

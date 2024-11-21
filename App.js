@@ -1,6 +1,7 @@
 // In App.js in a new project
 
 import * as React from "react";
+
 import { View, Text } from "react-native";
 import { createStaticNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -11,13 +12,26 @@ import Signout from "./screens/Signout";
 import Mycourses from "./screens/Mycourses";
 import Signin from "./screens/Signin";
 import Signup from "./screens/Signup";
+import Start from "./screens/Start";
+
+
+
 
 const RootStack = createNativeStackNavigator({
-  initialRouteName: "Signup",
+  initialRouteName: "Start",
   screenOptions: {
-    headerStyle: { backgroundColor: "tomato" },
+    headerStyle: { backgroundColor: "b" },
+    headerShown: false
   },
   screens: {
+
+    Start: {
+      screen: Start,
+      options: {
+        title: "Getting Started"
+      },
+},
+
     Home: {
       screen: Home,
       options: {
