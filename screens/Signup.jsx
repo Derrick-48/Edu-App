@@ -15,6 +15,7 @@ import Fontisto from "@expo/vector-icons/Fontisto";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { EvilIcons } from "@expo/vector-icons";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { useState, useEffect } from "react";
 import {
   createStaticNavigation,
@@ -63,6 +64,10 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmpassword] = useState("");
+  const [showPassword, setShowPassword] = useState(falseclear
+    
+  );
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState(null);
 
   return (
@@ -71,10 +76,10 @@ const Signup = () => {
         <SafeAreaView className="m-5">
           {/* back button */}
 
-          <View className="flex-row gap-2 items-center mt-4">
+          {/* <View className="flex-row gap-2 items-center mt-4">
             <AntDesign name="left" size={24} color="#E67E22" />
             <Text className="text-[#E67E22]">Back</Text>
-          </View>
+          </View> */}
           {/* logo */}
           <View className="flex justify-center items-center ">
             {/* <Image
@@ -118,11 +123,16 @@ const Signup = () => {
               <TextInput
                 className="flex-1 ml-3 text-base text-gray-800"
                 placeholder="Password"
-                secureTextEntry={true}
+                secureTextEntry={showPassword}
                 onChangeText={(text) => setPassword(text)}
                 value={password}
               />
-              <EvilIcons name="eye" size={34} color="black" />
+              <FontAwesome6
+                
+                name={showPassword ? "eye" : "eye-slash"}
+                size={24}
+                color="black"
+              />
             </View>
 
             {/* confirm password component */}
@@ -132,25 +142,28 @@ const Signup = () => {
               <TextInput
                 className="flex-1 ml-3 text-base text-gray-800"
                 placeholder=" Confirm Password"
-                secureTextEntry={true}
+                secureTextEntry={!showConfirmPassword}
                 onChangeText={(text) => setConfirmpassword(text)}
                 value={confirmpassword}
               />
-              <EvilIcons name="eye" size={34} color="black" />
+              <FontAwesome6
+                name={showPassword ? "eye" : "eye-slash"}
+                size={24}
+                color="black"
+              />
             </View>
 
             {/* Sign Up button */}
             <View className="bg-[#2ECC71] p-3 rounded-2xl mb-16">
               <TouchableOpacity onPress={handleSignup}>
                 <Text className="text-center font-bold text-white ">
-                  Sign up989
+                  Sign up
                 </Text>
               </TouchableOpacity>
             </View>
             <View className=" flex-row  justify-center">
               <Text className=" text-[#0F0C80]">Already have account? </Text>
-              <TouchableOpacity onPress={() => navigation.navigate("Signin")}>ww231331qwwwwwwwwwwwwwwwwww2ww22133111113qqqq2qqqqqqqqqqqqqqqqqqqqqw222222222222222222222qq 2121qqqqqq          qq      qqq <AQQ>Q  Q Q <AqqaQ><Q>Q   <QQQ>Q  <Q> q q q q qq  <a href="qAQQ">Q  Q   <Q>   <Q> Q       Q   <Q>Q    <Q><Q><Q><Q><Q>q  <q>q  q q AQ  Q Q   Q                               <q>   qq  q <q><Q><Q><Q><Q>   Q Q       <Q><Q><Q> <q> <q> <q><q><q><Qa><q><q><q><q>qqq    qqqqqqqqqqqqqqqqqq  qqqqqqqqqqqqqqqqqqqqqqq q   <q><q>                                                                                                                  q                         <q>   qqq   <Q><Qaq><q><Q><q> <Q> <Q><Q><Q><Q>Q   Q aA  qAQ <WA>qwAaAaaaaaaaaA  <Q>Q    <q>Q                            Q aq  q q       qaq <A><q><Qa><Aa>q     <Q>Q  qA  Q Q QQ    qwAaAaaaaaaaaAQaAQ    <Qa>A <Q><a href="Q">Q                  q         <a href="qA"><Q><Q>Q    <Q>Q  qa      q   aq    q1  <q><Q><q>                       Q   Q a q <q>       <q> <Q><Q><Q>Q  <Q>q  <q><q>q   <q><q>q <q>q      <Qa1> <q>QQ     <Q1>  <Q1><Q>Q    <Q><Q><Q><Q><q><q><q> <Q>                                                                                           <Q>QQQQQQQQQQQQQQQQQQQQQ                                                        <Q>QQQQQQ11`11  1             Q                                                                           11        qa  q q AQ    <Q1>1 Q   <Q><Q>  <Q>1Q Q   Qa  q   <Q><Q1>q  1 qqqqqqqqqqqqqqq q 12qq  1q11  <q>qq 1q  q   q                                           qqqqqqqqqqqqqqq q 1q  q 1q  1 qq              1q              1   q 1   1             1qq 1q  1q1212q1q 11              q111111111111111111111111111111 1q  2   1 qq  AQ                                                      q                               q q q1q 1qq 12  q12qwq  1q  1`11212121qq    q q q   q1q1111111111111111111111111111111111111111111111111111111111111  q1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111  
-              81//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8zAS/*/8a sa/*/sa*//a*/*wq*/z/*X*/**/*a*//QWAS</q></Q1></Q></Q></Q></Q></Q1></Q></Q></Q></q></q></q></Q></Q></Q></Q></Q></Q1></Q1></q></Qa1></q></q></q></q></q></Q></Q></Q></Q></q></q></q></Q></q></Q></Q></Q></a></a></Q></Qa></Q></Aa></Qa></q></A></q></Q></WA></Q></Q></Q></Q></Q></q></Q></q></Qaq></Q></q></q></q></q></q></q></q></Qa></q></q></q></q></q></Q></Q></Q></Q></Q></Q></Q></q></q></q></Q></Q></Q></Q></Q></Q></Q></Q></a></Q></QQQ></Q></AqqaQ></AQQ>
+              <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
                 <Text className="text-[#0F0C80] font-bold ">Sign in</Text>
               </TouchableOpacity>
             </View>

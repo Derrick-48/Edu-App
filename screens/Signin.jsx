@@ -14,6 +14,7 @@ import Fontisto from "@expo/vector-icons/Fontisto";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { EvilIcons } from "@expo/vector-icons";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { useState, useEffect } from "react";
 import {
   createStaticNavigation,
@@ -48,7 +49,8 @@ const Signin = () => {
   const navigation = useNavigation();
   
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <KeyboardAvoidingView>
       <SafeAreaView className=" p-6">
@@ -80,11 +82,15 @@ const Signin = () => {
           <TextInput
             className="flex-1 ml-3 text-base text-gray-800"
             placeholder="Password"
-            secureTextEntry={true}
+            secureTextEntry={!showPassword}
             onChangeText={(text) => setPassword(text)}
             value={password}
           />
-          <EvilIcons name="eye" size={34} color="black" />
+          <FontAwesome6
+            name={showPassword ? "eye" : "eye-slash"}
+            size={24}
+            color="black"
+          />
         </View>
 
         <View className="ml-60 mb-8">
