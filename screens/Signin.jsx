@@ -77,6 +77,7 @@ const Signin = () => {
           />
         </View>
 
+{/** 
         <View className="flex-row items-center border-2 border-[#0F0C80] rounded-2xl pl-3 mb-8">
           <Fontisto name="locked" size={24} color="#0F0C80" />
           <TextInput
@@ -91,6 +92,26 @@ const Signin = () => {
             size={24}
             color="black"
           />
+        </View>
+        */}
+
+<View className="flex-row items-center border-2 border-[#0F0C80] rounded-2xl pl-3 mb-8">
+          <Fontisto name="locked" size={24} color="#0F0C80" />
+          <TextInput
+            className="flex-1 ml-3 text-base text-gray-800"
+            placeholder="Password"
+            secureTextEntry={!showPassword}
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+          />
+
+          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+            <FontAwesome6
+              name={showPassword ? "eye" : "eye-slash"}
+              size={20}
+              color="black"
+            />
+          </TouchableOpacity>
         </View>
 
         <View className="ml-60 mb-8">

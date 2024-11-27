@@ -8,7 +8,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
-import React from 'react'
+import React from "react";
 
 import { Octicons } from "@expo/vector-icons";
 import Fontisto from "@expo/vector-icons/Fontisto";
@@ -24,13 +24,7 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth } from "../firebase";
 
-
-
-
-
 const Signup = () => {
-
-
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -41,23 +35,19 @@ const Signup = () => {
     return unsubscribe;
   }, []);
 
-
   const handleSignup = () => {
-     if (password !== confirmpassword) {
-       alert("Passwords do not match. Please try again.");
-       return; // Exit the function if passwords don't match
-     }
-     auth
-       .createUserWithEmailAndPassword(email, password)
-       .then((userCredentials) => {
-         const user = userCredentials.user;
-         console.log("Registered with:", user.email);
-       })
-       .catch((error) => alert(error.message));
-   };
-
-  
-
+    if (password !== confirmpassword) {
+      alert("Passwords do not match. Please try again.");
+      return; // Exit the function if passwords don't match
+    }
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        console.log("Registered with:", user.email);
+      })
+      .catch((error) => alert(error.message));
+  };
 
   const navigation = useNavigation();
   const [fullname, setFullname] = useState("");
@@ -114,41 +104,44 @@ const Signup = () => {
               />
             </View>
 
-            {/* Password component */}
-
+            {/* Password Component*/}
             <View className="flex-row items-center border-2 border-[#0F0C80] rounded-2xl pl-3 mb-8">
               <Fontisto name="locked" size={24} color="#0F0C80" />
               <TextInput
                 className="flex-1 ml-3 text-base text-gray-800"
                 placeholder="Password"
-                secureTextEntry={showPassword}
-                onChangeText={(text) => setPassword(text)}
+                secureTextEntry={!showPassword}
+                onChangeText={setPassword}
                 value={password}
               />
-              <FontAwesome6
-                
-                name={showPassword ? "eye" : "eye-slash"}
-                size={24}
-                color="black"
-              />
+              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                <FontAwesome6
+                  name={showPassword ? "eye" : "eye-slash"}
+                  size={20}
+                  color="black"
+                />
+              </TouchableOpacity>
             </View>
 
-            {/* confirm password component */}
-
+            {/* Confirm Password Component*/}
             <View className="flex-row items-center border-2 border-[#0F0C80] rounded-2xl pl-3 mb-8">
               <Fontisto name="locked" size={24} color="#0F0C80" />
               <TextInput
                 className="flex-1 ml-3 text-base text-gray-800"
-                placeholder=" Confirm Password"
+                placeholder="Confirm Password"
                 secureTextEntry={!showConfirmPassword}
-                onChangeText={(text) => setConfirmpassword(text)}
+                onChangeText={setConfirmpassword}
                 value={confirmpassword}
               />
-              <FontAwesome6
-                name={showPassword ? "eye" : "eye-slash"}
-                size={24}
-                color="black"
-              />
+              <TouchableOpacity
+                onPress={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                <FontAwesome6
+                  name={showConfirmPassword ? "eye" : "eye-slash"}
+                  size={20}
+                  color="black"
+                />
+              </TouchableOpacity>
             </View>
 
             {/* Sign Up button */}
@@ -171,6 +164,6 @@ const Signup = () => {
       </KeyboardAvoidingView>
     </ScrollView>
   );
-}
+};
 
-export default Signup
+export default Signup;
